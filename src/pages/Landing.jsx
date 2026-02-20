@@ -1,18 +1,18 @@
 /**
  * Landing.jsx
- * Landing page with hero, 5-module showcase, features, stats, and CTA.
+ * Premium anti-gravity landing page for AthleteAI.
  */
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
-const fadeUp = { initial: { opacity: 0, y: 30 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true }, transition: { duration: 0.6 } };
+const fadeUp = { initial: { opacity: 0, y: 24 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true }, transition: { duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] } };
 
 const MODULES = [
-    { icon: '🏃', title: 'Speed & Agility', desc: 'Sprint timing, T-Test agility drills', path: '/test/sprint', color: '#39ff14' },
-    { icon: '💪', title: 'Strength', desc: 'Push-ups, Vertical Jump analysis', path: '/test/pushups', color: '#00d4ff' },
-    { icon: '🫀', title: 'Endurance', desc: 'Beep Test with VO2 max estimation', path: '/test/beep', color: '#a855f7' },
-    { icon: '🎯', title: 'Skill Accuracy', desc: 'Multi-sport target drills', path: '/test/target', color: '#fbbf24' },
-    { icon: '🧠', title: 'Reaction Time', desc: 'Interactive reflex games', path: '/test/reaction', color: '#ff3b5c' },
+    { icon: '🏃', title: 'Speed & Agility', desc: 'Sprint timing and T-Test agility drills with live motion tracking', path: '/test/sprint' },
+    { icon: '💪', title: 'Strength', desc: 'Push-ups and vertical jump analysis powered by pose detection', path: '/test/pushups' },
+    { icon: '🫀', title: 'Endurance', desc: 'Beep test with VO2 max estimation and progressive difficulty', path: '/test/beep' },
+    { icon: '🎯', title: 'Skill Accuracy', desc: 'Multi-sport target tracking for football, cricket, and basketball', path: '/test/target' },
+    { icon: '🧠', title: 'Reaction Time', desc: 'Three interactive reflex games measuring millisecond precision', path: '/test/reaction' },
 ];
 
 const FEATURES = [
@@ -38,37 +38,51 @@ export default function Landing() {
         <div style={{ overflow: 'hidden' }}>
             {/* ═══ HERO ═══ */}
             <section style={{
-                minHeight: '85vh', display: 'flex', alignItems: 'center', justifyContent: 'center',
-                textAlign: 'center', padding: '60px 20px 40px', position: 'relative',
+                minHeight: '88vh', display: 'flex', alignItems: 'center', justifyContent: 'center',
+                textAlign: 'center', padding: '80px 24px 60px', position: 'relative',
             }}>
                 <div className="animated-bg" />
-                <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}
-                    style={{ maxWidth: '800px' }}>
+                <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.9, ease: [0.25, 0.46, 0.45, 0.94] }}
+                    style={{ maxWidth: '720px' }}>
+
                     <div style={{
-                        display: 'inline-block', padding: '6px 18px', borderRadius: '20px', fontSize: '0.75rem',
-                        fontWeight: 700, marginBottom: '20px', letterSpacing: '1px',
-                        background: 'rgba(57, 255, 20, 0.1)', border: '1px solid rgba(57, 255, 20, 0.3)',
-                        color: 'var(--neon-green)',
+                        display: 'inline-flex', alignItems: 'center', gap: '8px',
+                        padding: '8px 20px', borderRadius: '100px', fontSize: '0.72rem',
+                        fontWeight: 600, marginBottom: '28px', letterSpacing: '0.04em',
+                        background: 'rgba(129, 140, 248, 0.06)',
+                        border: '1px solid rgba(129, 140, 248, 0.12)',
+                        color: '#818cf8',
                     }}>
-                        🏅 MULTI-SPORT AI ASSESSMENT PLATFORM
+                        <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#818cf8' }} />
+                        AI-Powered Sports Assessment
                     </div>
-                    <h1 style={{ fontSize: 'clamp(2rem, 5vw, 3.5rem)', fontWeight: 900, lineHeight: 1.1, marginBottom: '18px' }}>
-                        AI-Powered Sports Talent{' '}
-                        <span className="gradient-text">Identification for Every Athlete</span>{' '}
-                        in India
+
+                    <h1 style={{
+                        fontSize: 'clamp(2.2rem, 5vw, 3.8rem)', fontWeight: 800,
+                        lineHeight: 1.08, marginBottom: '24px', letterSpacing: '-0.03em',
+                    }}>
+                        Discover Athletic{' '}
+                        <span className="gradient-text">Potential</span>{' '}
+                        with AI
                     </h1>
-                    <p style={{ fontSize: 'clamp(0.9rem, 2vw, 1.1rem)', color: 'var(--text-secondary)', maxWidth: '600px', margin: '0 auto 28px', lineHeight: 1.6 }}>
-                        7 test modules. 5 sport categories. One unified platform.
-                        Scientific assessments powered by AI pose detection — directly from your smartphone.
+
+                    <p style={{
+                        fontSize: 'clamp(1rem, 2vw, 1.15rem)', color: 'var(--text-secondary)',
+                        maxWidth: '540px', margin: '0 auto 36px', lineHeight: 1.7,
+                    }}>
+                        Scientific assessments across 7 test modules, powered by real-time
+                        pose detection — directly from your device.
                     </p>
-                    <div style={{ display: 'flex', gap: '14px', justifyContent: 'center', flexWrap: 'wrap' }}>
-                        <button className="btn-secondary" onClick={() => navigate('/login')}
-                            style={{ padding: '14px 32px', fontSize: '1rem' }}>
-                            🔐 Login / Sign Up
-                        </button>
+
+                    <div style={{ display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap' }}>
                         <button className="btn-primary" onClick={() => navigate('/select-test')}
-                            style={{ padding: '14px 32px', fontSize: '1rem' }}>
-                            🚀 Start Testing
+                            style={{ padding: '16px 36px', fontSize: '0.95rem' }}>
+                            Start Assessment
+                        </button>
+                        <button className="btn-secondary" onClick={() => navigate('/login')}
+                            style={{ padding: '16px 36px', fontSize: '0.95rem' }}>
+                            Sign In
                         </button>
                     </div>
                 </motion.div>
@@ -76,24 +90,27 @@ export default function Landing() {
 
             {/* ═══ STATS BAR ═══ */}
             <section style={{
-                display: 'flex', justifyContent: 'center', gap: '40px', padding: '24px 20px',
-                flexWrap: 'wrap', borderTop: '1px solid var(--glass-border)', borderBottom: '1px solid var(--glass-border)',
+                display: 'flex', justifyContent: 'center', gap: '48px', padding: '32px 24px',
+                flexWrap: 'wrap',
             }}>
                 {STATS.map((s, i) => (
-                    <motion.div key={i} {...fadeUp} transition={{ delay: i * 0.1 }} style={{ textAlign: 'center' }}>
-                        <div className="gradient-text" style={{ fontSize: '2rem', fontWeight: 900 }}>{s.value}</div>
-                        <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)', fontWeight: 600, textTransform: 'uppercase' }}>{s.label}</div>
+                    <motion.div key={i} {...fadeUp} transition={{ delay: i * 0.08 }} style={{ textAlign: 'center' }}>
+                        <div style={{ fontSize: '2.2rem', fontWeight: 800, color: 'var(--text-primary)', letterSpacing: '-0.02em' }}>{s.value}</div>
+                        <div style={{ fontSize: '0.72rem', color: 'var(--text-muted)', fontWeight: 600, letterSpacing: '0.06em', textTransform: 'uppercase', marginTop: '4px' }}>{s.label}</div>
                     </motion.div>
                 ))}
             </section>
 
+            {/* ═══ DIVIDER ═══ */}
+            <div style={{ maxWidth: '200px', height: '1px', background: 'linear-gradient(90deg, transparent, rgba(129,140,248,0.15), transparent)', margin: '0 auto' }} />
+
             {/* ═══ 5 MODULES ═══ */}
-            <section style={{ padding: '60px 20px', maxWidth: '1100px', margin: '0 auto' }}>
-                <motion.div {...fadeUp} style={{ textAlign: 'center', marginBottom: '40px' }}>
-                    <h2 style={{ fontSize: '2rem', fontWeight: 800 }}>
-                        <span className="gradient-text">5 Assessment Modules</span>
+            <section style={{ padding: '72px 24px', maxWidth: '1100px', margin: '0 auto' }}>
+                <motion.div {...fadeUp} style={{ textAlign: 'center', marginBottom: '48px' }}>
+                    <h2 style={{ fontSize: '2rem', fontWeight: 800, letterSpacing: '-0.02em' }}>
+                        Assessment <span className="gradient-text">Modules</span>
                     </h2>
-                    <p style={{ color: 'var(--text-secondary)', marginTop: '8px' }}>
+                    <p style={{ color: 'var(--text-secondary)', marginTop: '12px', maxWidth: '500px', margin: '12px auto 0', lineHeight: 1.6 }}>
                         Comprehensive evaluation across speed, strength, endurance, skill, and reaction.
                     </p>
                 </motion.div>
@@ -103,66 +120,66 @@ export default function Landing() {
                     gap: '16px',
                 }}>
                     {MODULES.map((mod, i) => (
-                        <motion.div key={i} {...fadeUp} transition={{ delay: i * 0.1 }}
+                        <motion.div key={i} {...fadeUp} transition={{ delay: i * 0.08 }}
                             className="glass-card glass-card-hover"
                             onClick={() => navigate(mod.path)}
                             style={{
-                                padding: '28px 20px', textAlign: 'center', cursor: 'pointer',
-                                borderTop: `3px solid ${mod.color}`,
+                                padding: '32px 24px', textAlign: 'center', cursor: 'pointer',
                             }}>
-                            <div style={{ fontSize: '2.5rem', marginBottom: '12px' }}>{mod.icon}</div>
-                            <div style={{ fontWeight: 700, fontSize: '1rem', marginBottom: '6px' }}>{mod.title}</div>
-                            <div style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', lineHeight: 1.5 }}>{mod.desc}</div>
+                            <div style={{ fontSize: '2.8rem', marginBottom: '16px', filter: 'drop-shadow(0 4px 12px rgba(0,0,0,0.3))' }}>{mod.icon}</div>
+                            <div style={{ fontWeight: 700, fontSize: '1rem', marginBottom: '8px', color: 'var(--text-primary)' }}>{mod.title}</div>
+                            <div style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', lineHeight: 1.6 }}>{mod.desc}</div>
                         </motion.div>
                     ))}
                 </div>
             </section>
 
             {/* ═══ FEATURES ═══ */}
-            <section style={{ padding: '50px 20px', maxWidth: '1100px', margin: '0 auto' }}>
-                <motion.div {...fadeUp} style={{ textAlign: 'center', marginBottom: '36px' }}>
-                    <h2 style={{ fontSize: '1.8rem', fontWeight: 800 }}>
+            <section style={{ padding: '56px 24px', maxWidth: '1100px', margin: '0 auto' }}>
+                <motion.div {...fadeUp} style={{ textAlign: 'center', marginBottom: '48px' }}>
+                    <h2 style={{ fontSize: '1.8rem', fontWeight: 800, letterSpacing: '-0.02em' }}>
                         Why <span className="gradient-text">AthleteAI</span>?
                     </h2>
                 </motion.div>
 
                 <div style={{
-                    display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+                    display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
                     gap: '16px',
                 }}>
                     {FEATURES.map((feat, i) => (
-                        <motion.div key={i} {...fadeUp} transition={{ delay: i * 0.08 }}
-                            className="glass-card glass-card-hover" style={{ padding: '24px' }}>
-                            <div style={{ fontSize: '1.8rem', marginBottom: '10px' }}>{feat.icon}</div>
-                            <div style={{ fontWeight: 700, fontSize: '0.95rem', marginBottom: '6px' }}>{feat.title}</div>
-                            <div style={{ fontSize: '0.82rem', color: 'var(--text-secondary)', lineHeight: 1.6 }}>{feat.desc}</div>
+                        <motion.div key={i} {...fadeUp} transition={{ delay: i * 0.06 }}
+                            className="glass-card glass-card-hover" style={{ padding: '28px' }}>
+                            <div style={{ fontSize: '1.6rem', marginBottom: '14px' }}>{feat.icon}</div>
+                            <div style={{ fontWeight: 700, fontSize: '0.95rem', marginBottom: '8px' }}>{feat.title}</div>
+                            <div style={{ fontSize: '0.82rem', color: 'var(--text-secondary)', lineHeight: 1.7 }}>{feat.desc}</div>
                         </motion.div>
                     ))}
                 </div>
             </section>
 
             {/* ═══ HOW IT WORKS ═══ */}
-            <section style={{ padding: '50px 20px', maxWidth: '800px', margin: '0 auto' }}>
-                <motion.div {...fadeUp} style={{ textAlign: 'center', marginBottom: '36px' }}>
-                    <h2 style={{ fontSize: '1.8rem', fontWeight: 800 }}>How It <span className="gradient-text">Works</span></h2>
+            <section style={{ padding: '56px 24px', maxWidth: '720px', margin: '0 auto' }}>
+                <motion.div {...fadeUp} style={{ textAlign: 'center', marginBottom: '40px' }}>
+                    <h2 style={{ fontSize: '1.8rem', fontWeight: 800, letterSpacing: '-0.02em' }}>How It <span className="gradient-text">Works</span></h2>
                 </motion.div>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
                     {[
-                        { step: '1', title: 'Choose a test module', desc: 'Pick from 7 scientific assessments across 5 categories.' },
-                        { step: '2', title: 'Perform the test', desc: 'Use your live camera for real-time AI analysis.' },
-                        { step: '3', title: 'Get your scorecard', desc: 'Receive a weighted score, radar chart, and national ranking.' },
-                        { step: '4', title: 'Track & compete', desc: 'Monitor progress, earn badges, and climb the leaderboard.' },
+                        { step: '01', title: 'Choose a test module', desc: 'Pick from 7 scientific assessments across 5 categories.' },
+                        { step: '02', title: 'Perform the test', desc: 'Use your live camera for real-time AI analysis.' },
+                        { step: '03', title: 'Get your scorecard', desc: 'Receive a weighted score, radar chart, and national ranking.' },
+                        { step: '04', title: 'Track & compete', desc: 'Monitor progress, earn badges, and climb the leaderboard.' },
                     ].map((item, i) => (
-                        <motion.div key={i} {...fadeUp} transition={{ delay: i * 0.1 }}
-                            className="glass-card" style={{ padding: '20px 24px', display: 'flex', gap: '16px', alignItems: 'center' }}>
+                        <motion.div key={i} {...fadeUp} transition={{ delay: i * 0.08 }}
+                            className="glass-card" style={{ padding: '22px 28px', display: 'flex', gap: '20px', alignItems: 'center' }}>
                             <div style={{
-                                width: '40px', height: '40px', borderRadius: '10px', display: 'flex',
-                                alignItems: 'center', justifyContent: 'center', fontSize: '1rem', fontWeight: 800,
-                                background: 'rgba(57, 255, 20, 0.1)', color: 'var(--neon-green)', flexShrink: 0,
+                                width: '44px', height: '44px', borderRadius: '12px', display: 'flex',
+                                alignItems: 'center', justifyContent: 'center', fontSize: '0.85rem', fontWeight: 800,
+                                background: 'rgba(129, 140, 248, 0.08)', color: '#818cf8', flexShrink: 0,
+                                fontFamily: 'monospace', letterSpacing: '-0.02em',
                             }}>{item.step}</div>
                             <div>
-                                <div style={{ fontWeight: 700, fontSize: '0.95rem' }}>{item.title}</div>
-                                <div style={{ fontSize: '0.82rem', color: 'var(--text-secondary)' }}>{item.desc}</div>
+                                <div style={{ fontWeight: 700, fontSize: '0.95rem', marginBottom: '2px' }}>{item.title}</div>
+                                <div style={{ fontSize: '0.82rem', color: 'var(--text-secondary)', lineHeight: 1.5 }}>{item.desc}</div>
                             </div>
                         </motion.div>
                     ))}
@@ -170,34 +187,35 @@ export default function Landing() {
             </section>
 
             {/* ═══ CTA ═══ */}
-            <section style={{ padding: '60px 20px', textAlign: 'center' }}>
+            <section style={{ padding: '72px 24px', textAlign: 'center' }}>
                 <motion.div {...fadeUp} className="glass-card" style={{
-                    maxWidth: '700px', margin: '0 auto', padding: '48px 32px',
-                    border: '1px solid rgba(57, 255, 20, 0.2)',
+                    maxWidth: '640px', margin: '0 auto', padding: '56px 40px',
+                    boxShadow: 'var(--shadow-float)',
                 }}>
-                    <h2 style={{ fontSize: '1.6rem', fontWeight: 800, marginBottom: '12px' }}>
-                        Ready to discover your <span className="gradient-text">athletic potential</span>?
+                    <h2 style={{ fontSize: '1.6rem', fontWeight: 800, marginBottom: '14px', letterSpacing: '-0.02em' }}>
+                        Ready to discover your <span className="gradient-text">potential</span>?
                     </h2>
-                    <p style={{ color: 'var(--text-secondary)', marginBottom: '24px' }}>
+                    <p style={{ color: 'var(--text-secondary)', marginBottom: '28px', lineHeight: 1.6 }}>
                         Join thousands of athletes being evaluated by AI across India.
                     </p>
-                    <div style={{ display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap' }}>
+                    <div style={{ display: 'flex', gap: '14px', justifyContent: 'center', flexWrap: 'wrap' }}>
                         <button className="btn-primary" onClick={() => navigate('/select-test')}
-                            style={{ padding: '14px 32px', fontSize: '1rem' }}>🚀 Start Your Assessment</button>
+                            style={{ padding: '16px 36px', fontSize: '0.95rem' }}>Start Your Assessment</button>
                         <button className="btn-secondary" onClick={() => navigate('/dashboard')}
-                            style={{ padding: '14px 32px', fontSize: '1rem' }}>📊 View Dashboard</button>
+                            style={{ padding: '16px 36px', fontSize: '0.95rem' }}>View Dashboard</button>
                     </div>
                 </motion.div>
             </section>
 
             {/* ═══ FOOTER ═══ */}
             <footer style={{
-                padding: '24px 20px', borderTop: '1px solid var(--glass-border)',
-                textAlign: 'center', fontSize: '0.8rem', color: 'var(--text-muted)',
+                padding: '32px 24px', textAlign: 'center',
+                fontSize: '0.78rem', color: 'var(--text-muted)',
             }}>
-                <p>⚡ AthleteAI • AI-Powered Multi-Sport Assessment Platform • Government of India Initiative</p>
-                <p style={{ marginTop: '4px', fontSize: '0.7rem' }}>
-                    Built for 🇮🇳 India • Low-bandwidth compatible • 100% Free
+                <div style={{ maxWidth: '400px', height: '1px', background: 'linear-gradient(90deg, transparent, rgba(148,163,184,0.08), transparent)', margin: '0 auto 24px' }} />
+                <p>AthleteAI · AI-Powered Multi-Sport Assessment Platform</p>
+                <p style={{ marginTop: '6px', fontSize: '0.7rem', color: 'var(--text-muted)', opacity: 0.7 }}>
+                    Built for India · Low-bandwidth compatible · 100% Free
                 </p>
             </footer>
         </div>

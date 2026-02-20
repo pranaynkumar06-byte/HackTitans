@@ -10,22 +10,22 @@ const TESTS = [
     {
         id: 'sprint', path: '/test/sprint', icon: '🏃', name: 'Sprint Test',
         desc: '20m / 40m sprint timing with AI motion tracking',
-        category: 'Speed & Agility', color: '#14b8a6', difficulty: 'Medium',
+        category: 'Speed & Agility', color: '#818cf8', difficulty: 'Medium',
     },
     {
         id: 't-test', path: '/test/t-test', icon: '⚡', name: 'T-Test Agility',
         desc: 'Agility drill with direction change efficiency scoring',
-        category: 'Speed & Agility', color: '#14b8a6', difficulty: 'Hard',
+        category: 'Speed & Agility', color: '#818cf8', difficulty: 'Hard',
     },
     {
         id: 'pushups', path: '/test/pushups', icon: '💪', name: 'Push-Up Test',
         desc: '1-minute timed push-ups with AI rep counting & form analysis',
-        category: 'Strength', color: '#22d3ee', difficulty: 'Medium',
+        category: 'Strength', color: '#a78bfa', difficulty: 'Medium',
     },
     {
         id: 'vjump', path: '/test/vertical-jump', icon: '🦘', name: 'Vertical Jump',
         desc: 'Jump height detection with explosive power scoring',
-        category: 'Strength', color: '#22d3ee', difficulty: 'Easy',
+        category: 'Strength', color: '#a78bfa', difficulty: 'Easy',
     },
     {
         id: 'beep', path: '/test/beep', icon: '🫀', name: 'Beep Test',
@@ -40,7 +40,7 @@ const TESTS = [
     {
         id: 'reaction', path: '/test/reaction', icon: '🧠', name: 'Reaction Time',
         desc: '3 interactive reflex games — test your reaction speed',
-        category: 'Reaction', color: '#fb7185', difficulty: 'Easy',
+        category: 'Reaction', color: '#f87171', difficulty: 'Easy',
     },
     {
         id: 'assessment', path: '/assessment', icon: '📹', name: 'Camera Assessment',

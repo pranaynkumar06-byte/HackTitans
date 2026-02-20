@@ -86,7 +86,7 @@ export default function Layout({ children }) {
                     height: '100vh',
                     position: 'sticky',
                     top: 0,
-                    background: 'rgba(10, 14, 39, 0.95)',
+                    background: 'rgba(8, 11, 18, 0.92)',
                     borderRight: sidebarOpen ? '1px solid var(--glass-border)' : 'none',
                     backdropFilter: 'blur(20px)',
                     overflowY: 'auto',
@@ -135,8 +135,8 @@ export default function Layout({ children }) {
                                                 display: 'flex', alignItems: 'center', gap: '12px',
                                                 padding: '10px 18px', marginInline: '8px', borderRadius: '10px',
                                                 textDecoration: 'none', fontSize: '0.88rem', fontWeight: 600,
-                                                color: isActive ? 'var(--neon-green)' : 'var(--text-secondary)',
-                                                background: isActive ? 'rgba(57, 255, 20, 0.08)' : 'transparent',
+                                                color: isActive ? '#818cf8' : 'var(--text-secondary)',
+                                                background: isActive ? 'rgba(129, 140, 248, 0.06)' : 'transparent',
                                                 transition: 'all 0.2s ease',
                                             })}
                                         >
@@ -174,10 +174,10 @@ export default function Layout({ children }) {
                 <header style={{
                     padding: '12px 20px',
                     display: 'flex', alignItems: 'center', gap: '16px',
-                    borderBottom: '1px solid var(--glass-border)',
-                    background: 'rgba(5, 8, 22, 0.8)',
-                    backdropFilter: 'blur(20px)',
+                    background: 'rgba(8, 11, 18, 0.85)',
+                    backdropFilter: 'blur(24px)',
                     position: 'sticky', top: 0, zIndex: 50,
+                    boxShadow: '0 1px 0 rgba(148, 163, 184, 0.05)',
                 }}>
                     <button onClick={() => setSidebarOpen(!sidebarOpen)} style={{
                         background: 'none', border: '1px solid var(--glass-border)',
