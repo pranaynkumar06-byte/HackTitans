@@ -1,0 +1,451 @@
+@import "tailwindcss";
+
+/* ===== MINIMALISTIC THEME ===== */
+:root {
+  --navy-darkest: #0b0f14;
+  --navy-dark: #121820;
+  --navy-mid: #1a222e;
+  --navy-light: #24303f;
+  --neon-green: #14b8a6;
+  --neon-green-dim: #0d9488;
+  --electric-blue: #22d3ee;
+  --electric-blue-dim: #06b6d4;
+  --accent-purple: #c084fc;
+  --danger-red: #fb7185;
+  --warning-yellow: #fbbf24;
+  --success-green: #34d399;
+  --text-primary: #f0f4f8;
+  --text-secondary: #8b9bb4;
+  --text-muted: #5b6b82;
+  --glass-bg: rgba(18, 24, 32, 0.75);
+  --glass-border: rgba(20, 184, 166, 0.1);
+  --glass-shadow: 0 4px 24px rgba(0, 0, 0, 0.35);
+}
+
+/* ===== GLOBAL RESET ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  background: var(--navy-darkest);
+  color: var(--text-primary);
+  min-height: 100vh;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ===== SCROLLBAR ===== */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--navy-darkest);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--navy-light);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--neon-green-dim);
+}
+
+/* ===== GLASSMORPHISM CARD ===== */
+.glass-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--glass-border);
+  border-radius: 14px;
+  box-shadow: var(--glass-shadow);
+}
+
+.glass-card-hover {
+  transition: all 0.25s ease;
+}
+
+.glass-card-hover:hover {
+  border-color: rgba(20, 184, 166, 0.25);
+  box-shadow: 0 6px 32px rgba(20, 184, 166, 0.06);
+  transform: translateY(-2px);
+}
+
+/* ===== SUBTLE GLOW EFFECTS ===== */
+.neon-glow {
+  text-shadow: 0 0 16px rgba(20, 184, 166, 0.3);
+}
+
+.blue-glow {
+  text-shadow: 0 0 16px rgba(34, 211, 238, 0.3);
+}
+
+.neon-border {
+  box-shadow: 0 0 12px rgba(20, 184, 166, 0.15);
+}
+
+.blue-glow {
+  text-shadow: 0 0 16px rgba(56, 189, 248, 0.3);
+}
+
+.neon-border {
+  box-shadow: 0 0 12px rgba(99, 102, 241, 0.15);
+}
+
+/* ===== BUTTONS ===== */
+.btn-primary {
+  background: linear-gradient(135deg, var(--neon-green), var(--neon-green-dim));
+  color: #ffffff;
+  font-weight: 600;
+  padding: 12px 28px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  font-size: 0.9rem;
+  letter-spacing: 0.3px;
+  transition: all 0.25s ease;
+  text-transform: uppercase;
+}
+
+.btn-primary:hover {
+  box-shadow: 0 4px 20px rgba(20, 184, 166, 0.35);
+  transform: translateY(-1px);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--electric-blue);
+  font-weight: 600;
+  padding: 12px 28px;
+  border-radius: 10px;
+  border: 1.5px solid rgba(34, 211, 238, 0.35);
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.25s ease;
+}
+
+.btn-secondary:hover {
+  background: rgba(34, 211, 238, 0.06);
+  border-color: rgba(34, 211, 238, 0.55);
+  transform: translateY(-1px);
+}
+
+.btn-danger {
+  background: linear-gradient(135deg, var(--danger-red), #dc2626);
+  color: white;
+  font-weight: 600;
+  padding: 12px 28px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.25s ease;
+}
+
+/* ===== GRADIENT TEXT ===== */
+.gradient-text {
+  background: linear-gradient(135deg, var(--neon-green), var(--electric-blue));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ===== ANIMATED BACKGROUND ===== */
+.animated-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.animated-bg::before {
+  content: '';
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(20, 184, 166, 0.05) 0%, transparent 70%);
+  top: -200px;
+  right: -200px;
+  animation: float1 20s ease-in-out infinite;
+}
+
+.animated-bg::after {
+  content: '';
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(34, 211, 238, 0.04) 0%, transparent 70%);
+  bottom: -150px;
+  left: -150px;
+  animation: float2 24s ease-in-out infinite;
+}
+
+@keyframes float1 {
+
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  50% {
+    transform: translate(-40px, 40px) scale(1.05);
+  }
+}
+
+@keyframes float2 {
+
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  50% {
+    transform: translate(30px, -30px) scale(1.08);
+  }
+}
+
+/* ===== PULSE ANIMATION ===== */
+@keyframes pulse-neon {
+
+  0%,
+  100% {
+    box-shadow: 0 0 4px rgba(99, 102, 241, 0.2);
+  }
+
+  50% {
+    box-shadow: 0 0 12px rgba(99, 102, 241, 0.4);
+  }
+}
+
+.pulse-neon {
+  animation: pulse-neon 2s ease-in-out infinite;
+}
+
+/* ===== SPIN ===== */
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ===== BADGE ===== */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  border-radius: 8px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.badge-green {
+  background: rgba(16, 185, 129, 0.12);
+  color: var(--success-green);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+}
+
+.badge-blue {
+  background: rgba(56, 189, 248, 0.12);
+  color: var(--electric-blue);
+  border: 1px solid rgba(56, 189, 248, 0.25);
+}
+
+.badge-red {
+  background: rgba(244, 63, 94, 0.12);
+  color: var(--danger-red);
+  border: 1px solid rgba(244, 63, 94, 0.25);
+}
+
+.badge-yellow {
+  background: rgba(245, 158, 11, 0.12);
+  color: var(--warning-yellow);
+  border: 1px solid rgba(245, 158, 11, 0.25);
+}
+
+/* ===== METRICS COLORS ===== */
+.metric-green {
+  color: var(--success-green);
+}
+
+.metric-yellow {
+  color: var(--warning-yellow);
+}
+
+.metric-red {
+  color: var(--danger-red);
+}
+
+.metric-blue {
+  color: var(--electric-blue);
+}
+
+/* ===== PROGRESS BAR ===== */
+.progress-bar {
+  height: 6px;
+  background: var(--navy-mid);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  border-radius: 3px;
+  background: linear-gradient(90deg, var(--neon-green), var(--electric-blue));
+  transition: width 0.5s ease;
+}
+
+/* ===== OFFLINE INDICATOR ===== */
+.offline-badge {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  z-index: 1000;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.offline-badge.online {
+  background: rgba(16, 185, 129, 0.12);
+  color: var(--success-green);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+}
+
+.offline-badge.offline {
+  background: rgba(244, 63, 94, 0.12);
+  color: var(--danger-red);
+  border: 1px solid rgba(244, 63, 94, 0.25);
+  animation: pulse-neon 2s ease-in-out infinite;
+}
+
+/* ===== RESPONSIVE GRID ===== */
+.grid-responsive {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+/* ===== SECTION SPACING ===== */
+.section {
+  padding: 80px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 48px 16px;
+  }
+}
+
+/* ===== CHEAT ALERT OVERLAY ===== */
+.cheat-alert-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(244, 63, 94, 0.25);
+  border: 3px solid var(--danger-red);
+  border-radius: 14px;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: cheat-pulse 0.5s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes cheat-pulse {
+
+  0%,
+  100% {
+    background: rgba(244, 63, 94, 0.2);
+  }
+
+  50% {
+    background: rgba(244, 63, 94, 0.35);
+  }
+}
+
+/* ===== FEEDBACK STARS ===== */
+.star-rating {
+  display: flex;
+  gap: 8px;
+}
+
+.star-rating .star {
+  font-size: 2rem;
+  cursor: pointer;
+  transition: transform 0.15s ease, color 0.15s ease;
+  color: var(--navy-light);
+}
+
+.star-rating .star:hover,
+.star-rating .star.active {
+  color: var(--warning-yellow);
+  transform: scale(1.15);
+}
+
+/* ===== AUTH FORMS ===== */
+.auth-input {
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: 10px;
+  border: 1.5px solid var(--glass-border);
+  background: var(--navy-mid);
+  color: var(--text-primary);
+  font-size: 0.9rem;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.auth-input:focus {
+  border-color: var(--neon-green);
+}
+
+.auth-input::placeholder {
+  color: var(--text-muted);
+}
+
+.google-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1.5px solid var(--glass-border);
+  background: var(--navy-mid);
+  color: var(--text-primary);
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.google-btn:hover {
+  border-color: rgba(20, 184, 166, 0.4);
+  background: rgba(20, 184, 166, 0.08);
+}
