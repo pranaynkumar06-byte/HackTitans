@@ -142,6 +142,28 @@ function getRating(ms) {
     return { label: 'Slow', color: 'var(--danger-red)' };
 }
 
+// ═══════ CAMERA SWITCH BUTTON ═══════
+function CameraSwitchBtn({ onSwitch }) {
+    return (
+        <button
+            onClick={onSwitch}
+            style={{
+                position: 'absolute', top: '12px', right: '12px', zIndex: 10,
+                width: '48px', height: '48px', borderRadius: '50%', border: 'none',
+                background: 'rgba(0,0,0,0.5)', backdropFilter: 'blur(8px)',
+                WebkitBackdropFilter: 'blur(8px)', color: '#fff', fontSize: '1.4rem',
+                cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center',
+                transition: 'all 0.25s ease',
+            }}
+            onMouseEnter={(e) => { e.currentTarget.style.background = 'rgba(13,148,136,0.7)'; e.currentTarget.style.transform = 'scale(1.1)'; }}
+            onMouseLeave={(e) => { e.currentTarget.style.background = 'rgba(0,0,0,0.5)'; e.currentTarget.style.transform = 'scale(1)'; }}
+            title="Switch Camera"
+        >
+            🔄
+        </button>
+    );
+}
+
 // ═══════ MODE 1: PUNCH SPEED ═══════
 function PunchSpeedMode({ onResult }) {
     const pose = usePoseDetection();
@@ -233,17 +255,21 @@ function PunchSpeedMode({ onResult }) {
         };
     }, [pose.landmarks, started]);
 
+    const isFront = pose.facingMode === 'user' || !pose.facingMode;
+
     return (
         <div style={{ position: 'relative' }}>
             {/* Camera view */}
             <div style={{
-                position: 'relative', width: '100%', aspectRatio: '4/3',
+                position: 'relative', width: '100%', aspectRatio: '16/9',
                 background: '#111', overflow: 'hidden',
             }}>
                 <video ref={videoRef} playsInline muted style={{
                     width: '100%', height: '100%', objectFit: 'cover',
-                    transform: 'scaleX(-1)', display: started ? 'block' : 'none',
+                    transform: isFront ? 'scaleX(-1)' : 'none', display: started ? 'block' : 'none',
                 }} />
+
+                {started && <CameraSwitchBtn onSwitch={pose.switchCamera} />}
 
                 {started && pose.landmarks && (
                     <PoseOverlay landmarks={pose.landmarks} formQuality="good" width={640} height={480} />
@@ -389,16 +415,20 @@ function KickHeightMode({ onResult }) {
         }
     }, [pose.landmarks, started]);
 
+    const isFront = pose.facingMode === 'user' || !pose.facingMode;
+
     return (
         <div style={{ position: 'relative' }}>
             <div style={{
-                position: 'relative', width: '100%', aspectRatio: '4/3',
+                position: 'relative', width: '100%', aspectRatio: '16/9',
                 background: '#111', overflow: 'hidden',
             }}>
                 <video ref={videoRef} playsInline muted style={{
                     width: '100%', height: '100%', objectFit: 'cover',
-                    transform: 'scaleX(-1)', display: started ? 'block' : 'none',
+                    transform: isFront ? 'scaleX(-1)' : 'none', display: started ? 'block' : 'none',
                 }} />
+
+                {started && <CameraSwitchBtn onSwitch={pose.switchCamera} />}
 
                 {started && pose.landmarks && (
                     <PoseOverlay landmarks={pose.landmarks} formQuality="good" width={640} height={480} />
@@ -559,16 +589,20 @@ function ReactionChallengeMode({ onResult }) {
 
     const promptBg = currentPrompt ? currentPrompt.color : '#111';
 
+    const isFront = pose.facingMode === 'user' || !pose.facingMode;
+
     return (
         <div style={{ position: 'relative' }}>
             <div style={{
-                position: 'relative', width: '100%', aspectRatio: '4/3',
+                position: 'relative', width: '100%', aspectRatio: '16/9',
                 background: '#111', overflow: 'hidden',
             }}>
                 <video ref={videoRef} playsInline muted style={{
                     width: '100%', height: '100%', objectFit: 'cover',
-                    transform: 'scaleX(-1)', display: started ? 'block' : 'none',
+                    transform: isFront ? 'scaleX(-1)' : 'none', display: started ? 'block' : 'none',
                 }} />
+
+                {started && <CameraSwitchBtn onSwitch={pose.switchCamera} />}
 
                 {started && pose.landmarks && (
                     <PoseOverlay landmarks={pose.landmarks} formQuality="good" width={640} height={480} />

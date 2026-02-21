@@ -13,8 +13,7 @@ const CameraFeed = forwardRef(function CameraFeed({ isRunning, facingMode, onSwi
         <div className="camera-container" style={{
             position: 'relative',
             width: '100%',
-            maxWidth: '960px',
-            aspectRatio: '4/3',
+            aspectRatio: '16/9',
             borderRadius: '16px',
             overflow: 'hidden',
             background: '#111',

@@ -193,7 +193,7 @@ export default function Assessment() {
                 {/* LEFT: Camera + Controls */}
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
                     {/* Camera Feed with Pose Overlay */}
-                    <div ref={overlayContainerRef} style={{ position: 'relative', width: '100%', maxWidth: '640px' }}>
+                    <div ref={overlayContainerRef} style={{ position: 'relative', width: '100%' }}>
                         <CameraFeed ref={videoRef} isRunning={isRunning} facingMode={facingMode} onSwitchCamera={switchCamera} />
                         {landmarks && isRunning && (
                             <PoseOverlay
