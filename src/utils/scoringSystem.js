@@ -108,6 +108,22 @@ export function calculateReactionScore(avgMs) {
     return Math.round(Math.max(0, Math.min(100, ((500 - avgMs) / 350) * 100)));
 }
 
+/**
+ * Score combat reaction (punch speed + kick height + reaction time).
+ * @param {number} avgReactionMs - Average reaction time in ms
+ * @param {number} punchSpeedMs - Average punch speed in m/s
+ * @param {number} kickHeightPercent - Average kick height as % of body
+ * @returns {number} 0-100
+ */
+export function calculateCombatScore(avgReactionMs, punchSpeedMs = 0, kickHeightPercent = 0) {
+    const reactionScore = calculateReactionScore(avgReactionMs);
+    // Punch speed: 8 m/s = 100, 2 m/s = 0
+    const punchScore = Math.round(Math.max(0, Math.min(100, ((punchSpeedMs - 2) / 6) * 100)));
+    // Kick height: 80% = 100, 15% = 0
+    const kickScore = Math.round(Math.max(0, Math.min(100, ((kickHeightPercent - 15) / 65) * 100)));
+    return Math.round(reactionScore * 0.4 + punchScore * 0.3 + kickScore * 0.3);
+}
+
 // ═══════ COMPOSITE SCORING ═══════
 
 /**
@@ -173,6 +189,7 @@ export const BADGES = [
         }
     },
     { id: 'agility-master', name: 'Agility Master', icon: '🔄', description: 'Score 85+ on T-Test', condition: (stats) => (stats.agilityScore || 0) >= 85 },
+    { id: 'combat-elite', name: 'Combat Elite', icon: '🥊', description: 'Sub-250ms combat reaction time', condition: (stats) => (stats.combatReactionAvg || 999) < 250 },
 ];
 
 export function checkBadges(stats) {
@@ -207,6 +224,7 @@ export default {
     calculateBeepScore,
     calculateAccuracyScore,
     calculateReactionScore,
+    calculateCombatScore,
     calculateOverallScore,
     calculateSpeedModule,
     calculateStrengthModule,

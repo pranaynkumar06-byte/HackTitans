@@ -18,7 +18,7 @@ const BENCHMARKS = { elite: 9.5, good: 10.5, avg: 11.5, poor: 13.0 };
 
 export default function TTestDrill() {
     const videoRef = useRef(null);
-    const { landmarks, isLoading, isRunning, confidence, initializePose, startCamera } = usePoseDetection();
+    const { landmarks, isLoading, isRunning, confidence, facingMode, initializePose, startCamera, switchCamera } = usePoseDetection();
 
     const [phase, setPhase] = useState('idle'); // idle, ready, running, finished
     const [timer, setTimer] = useState(0);
@@ -139,7 +139,7 @@ export default function TTestDrill() {
                     {/* Camera */}
                     <div>
                         <div style={{ position: 'relative', marginBottom: '16px' }}>
-                            <CameraFeed ref={videoRef} isRunning={isRunning} />
+                            <CameraFeed ref={videoRef} isRunning={isRunning} facingMode={facingMode} onSwitchCamera={switchCamera} />
                             {landmarks && isRunning && (
                                 <PoseOverlay landmarks={landmarks} formQuality={showRedOverlay ? 'bad' : phase === 'running' ? 'good' : 'warning'} />
                             )}

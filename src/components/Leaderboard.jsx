@@ -112,8 +112,10 @@ export default function Leaderboard({ currentUserScore, currentUserRank }) {
                                     ? 'rgba(251, 191, 36, 0.3)'
                                     : 'var(--glass-border)',
                             background: entry.isCurrentUser
-                                ? 'rgba(57, 255, 20, 0.08)'
+                                ? 'rgba(13, 148, 136, 0.08)'
                                 : 'var(--glass-bg)',
+                            backdropFilter: 'blur(16px)',
+                            WebkitBackdropFilter: 'blur(16px)',
                         }}
                     >
                         {/* Rank */}

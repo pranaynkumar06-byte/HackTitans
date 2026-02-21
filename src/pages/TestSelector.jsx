@@ -10,27 +10,27 @@ const TESTS = [
     {
         id: 'sprint', path: '/test/sprint', icon: '🏃', name: 'Sprint Test',
         desc: '20m / 40m sprint timing with AI motion tracking',
-        category: 'Speed & Agility', color: '#818cf8', difficulty: 'Medium',
+        category: 'Speed & Agility', color: '#2dd4bf', difficulty: 'Medium',
     },
     {
         id: 't-test', path: '/test/t-test', icon: '⚡', name: 'T-Test Agility',
         desc: 'Agility drill with direction change efficiency scoring',
-        category: 'Speed & Agility', color: '#818cf8', difficulty: 'Hard',
+        category: 'Speed & Agility', color: '#2dd4bf', difficulty: 'Hard',
     },
     {
         id: 'pushups', path: '/test/pushups', icon: '💪', name: 'Push-Up Test',
         desc: '1-minute timed push-ups with AI rep counting & form analysis',
-        category: 'Strength', color: '#a78bfa', difficulty: 'Medium',
+        category: 'Strength', color: '#5eead4', difficulty: 'Medium',
     },
     {
         id: 'vjump', path: '/test/vertical-jump', icon: '🦘', name: 'Vertical Jump',
         desc: 'Jump height detection with explosive power scoring',
-        category: 'Strength', color: '#a78bfa', difficulty: 'Easy',
+        category: 'Strength', color: '#5eead4', difficulty: 'Easy',
     },
     {
         id: 'beep', path: '/test/beep', icon: '🫀', name: 'Beep Test',
         desc: 'Progressive shuttle run with VO2 max estimation',
-        category: 'Endurance', color: '#c084fc', difficulty: 'Hard',
+        category: 'Endurance', color: '#99f6e4', difficulty: 'Hard',
     },
     {
         id: 'target', path: '/test/target', icon: '🎯', name: 'Target Accuracy',
@@ -43,6 +43,11 @@ const TESTS = [
         category: 'Reaction', color: '#f87171', difficulty: 'Easy',
     },
     {
+        id: 'combat-reaction', path: '/test/combat-reaction', icon: '🥊', name: 'Combat Reaction',
+        desc: 'Punch speed, kick height & reaction challenges using AI pose tracking',
+        category: 'Combat', color: '#ef4444', difficulty: 'Advanced',
+    },
+    {
         id: 'assessment', path: '/assessment', icon: '📹', name: 'Camera Assessment',
         desc: 'Wall Sit, Sit-Ups, Squats, Broad Jump with live pose tracking',
         category: 'Multi-Test', color: '#34d399', difficulty: 'Medium',
@@ -53,6 +58,7 @@ const difficultyColors = {
     Easy: 'var(--success-green)',
     Medium: 'var(--warning-yellow)',
     Hard: 'var(--danger-red)',
+    Advanced: '#7c3aed',
 };
 
 export default function TestSelector() {
@@ -88,6 +94,9 @@ export default function TestSelector() {
                                 padding: '24px', cursor: 'pointer',
                                 borderTop: `3px solid ${test.color}`,
                                 display: 'flex', flexDirection: 'column', gap: '10px',
+                                background: 'var(--glass-bg)',
+                                backdropFilter: 'blur(16px)',
+                                WebkitBackdropFilter: 'blur(16px)',
                             }}
                         >
                             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'start' }}>

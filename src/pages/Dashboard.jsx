@@ -77,13 +77,13 @@ export default function Dashboard() {
                 {/* Top cards: Profile + Score + Rank */}
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '16px', marginBottom: '24px' }}>
                     {/* Profile */}
-                    <div className="glass-card" style={{ padding: '20px' }}>
+                    <div className="glass-card" style={{ padding: '20px', background: 'var(--glass-bg)', backdropFilter: 'blur(20px)', WebkitBackdropFilter: 'blur(20px)' }}>
                         <div style={{ display: 'flex', alignItems: 'center', gap: '14px', marginBottom: '12px' }}>
                             <div style={{
                                 width: '50px', height: '50px', borderRadius: '14px',
                                 background: 'linear-gradient(135deg, var(--neon-green), var(--electric-blue))',
                                 display: 'flex', alignItems: 'center', justifyContent: 'center',
-                                fontSize: '1.3rem', fontWeight: 800, color: '#0a0e27',
+                                fontSize: '1.3rem', fontWeight: 800, color: '#ffffff',
                             }}>{MOCK_PROFILE.name[0]}</div>
                             <div>
                                 <div style={{ fontWeight: 700, fontSize: '1.1rem' }}>{MOCK_PROFILE.name}</div>
@@ -102,7 +102,7 @@ export default function Dashboard() {
                     </div>
 
                     {/* Overall Score */}
-                    <div className="glass-card" style={{ padding: '20px', textAlign: 'center' }}>
+                    <div className="glass-card" style={{ padding: '20px', textAlign: 'center', background: 'var(--glass-bg)', backdropFilter: 'blur(20px)' }}>
                         <div style={{ fontSize: '0.7rem', fontWeight: 600, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '1px' }}>Overall Score</div>
                         <div className="gradient-text" style={{ fontSize: '3.5rem', fontWeight: 900, lineHeight: 1.1 }}>{overall}</div>
                         <div style={{ fontSize: '0.85rem', color: 'var(--text-secondary)' }}>out of 100</div>
@@ -110,7 +110,7 @@ export default function Dashboard() {
                     </div>
 
                     {/* National Rank */}
-                    <div className="glass-card" style={{ padding: '20px', textAlign: 'center' }}>
+                    <div className="glass-card" style={{ padding: '20px', textAlign: 'center', background: 'var(--glass-bg)', backdropFilter: 'blur(20px)' }}>
                         <div style={{ fontSize: '0.7rem', fontWeight: 600, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '1px' }}>National Rank</div>
                         <div style={{ fontSize: '2.5rem', fontWeight: 900, color: 'var(--neon-green)', lineHeight: 1.1 }}>#{rank.toLocaleString()}</div>
                         <div style={{ fontSize: '0.85rem', color: 'var(--text-secondary)' }}>out of 150,000</div>
@@ -119,12 +119,12 @@ export default function Dashboard() {
 
                 {/* Radar Chart + Module Scores */}
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px', marginBottom: '24px' }}>
-                    <div className="glass-card" style={{ padding: '24px', textAlign: 'center' }}>
+                    <div className="glass-card" style={{ padding: '24px', textAlign: 'center', background: 'var(--glass-bg)', backdropFilter: 'blur(16px)' }}>
                         <h3 style={{ fontSize: '0.9rem', fontWeight: 700, marginBottom: '12px' }}>Performance Radar</h3>
                         <RadarChart data={[MOCK_SCORES.speed, MOCK_SCORES.strength, MOCK_SCORES.endurance, MOCK_SCORES.skill, MOCK_SCORES.reaction]} size={250} />
                     </div>
 
-                    <div className="glass-card" style={{ padding: '24px' }}>
+                    <div className="glass-card" style={{ padding: '24px', background: 'var(--glass-bg)', backdropFilter: 'blur(16px)' }}>
                         <h3 style={{ fontSize: '0.9rem', fontWeight: 700, marginBottom: '16px' }}>Module Scores</h3>
                         {[
                             { label: 'Speed & Agility', value: MOCK_SCORES.speed, icon: '🏃', color: '#39ff14' },
@@ -150,7 +150,7 @@ export default function Dashboard() {
                 </div>
 
                 {/* Badges */}
-                <div className="glass-card" style={{ padding: '20px', marginBottom: '24px' }}>
+                <div className="glass-card" style={{ padding: '20px', marginBottom: '24px', background: 'var(--glass-bg)', backdropFilter: 'blur(16px)' }}>
                     <h3 style={{ fontSize: '0.9rem', fontWeight: 700, marginBottom: '12px' }}>🏅 Badges Earned ({earnedBadges.length})</h3>
                     {earnedBadges.length > 0 ? (
                         <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
@@ -167,13 +167,13 @@ export default function Dashboard() {
                 </div>
 
                 {/* Trend Graph */}
-                <div className="glass-card" style={{ padding: '24px', marginBottom: '24px' }}>
+                <div className="glass-card" style={{ padding: '24px', marginBottom: '24px', background: 'var(--glass-bg)', backdropFilter: 'blur(16px)' }}>
                     <h3 style={{ fontSize: '0.9rem', fontWeight: 700, marginBottom: '12px' }}>📈 Performance Trend</h3>
                     <TrendGraph data={TREND_DATA} labels={TREND_DATA.map((_, i) => `W${i + 1}`)} height={180} />
                 </div>
 
                 {/* Test History */}
-                <div className="glass-card" style={{ padding: '20px', marginBottom: '24px' }}>
+                <div className="glass-card" style={{ padding: '20px', marginBottom: '24px', background: 'var(--glass-bg)', backdropFilter: 'blur(16px)' }}>
                     <h3 style={{ fontSize: '0.9rem', fontWeight: 700, marginBottom: '12px' }}>📋 Test History</h3>
                     <div style={{ overflowX: 'auto' }}>
                         <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.82rem' }}>

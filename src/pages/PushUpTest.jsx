@@ -17,7 +17,7 @@ import TrendGraph from '../components/TrendGraph';
 
 export default function PushUpTest() {
     const videoRef = useRef(null);
-    const { landmarks, isLoading, isRunning, confidence, initializePose, startCamera, stopCamera } = usePoseDetection();
+    const { landmarks, isLoading, isRunning, confidence, facingMode, initializePose, startCamera, stopCamera, switchCamera } = usePoseDetection();
 
     const [isActive, setIsActive] = useState(false);
     const [reps, setReps] = useState(0);
@@ -144,7 +144,7 @@ export default function PushUpTest() {
                     {/* Camera */}
                     <div>
                         <div style={{ position: 'relative', marginBottom: '16px' }}>
-                            <CameraFeed ref={videoRef} isRunning={isRunning} />
+                            <CameraFeed ref={videoRef} isRunning={isRunning} facingMode={facingMode} onSwitchCamera={switchCamera} />
                             {landmarks && isRunning && <PoseOverlay landmarks={landmarks} formQuality={showRedOverlay ? 'bad' : formScore > 70 ? 'good' : formScore > 40 ? 'warning' : 'bad'} />}
                             <CheatAlertOverlay alerts={cheatAlerts} visible={showRedOverlay} />
                         </div>

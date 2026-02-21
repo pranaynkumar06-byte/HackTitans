@@ -74,7 +74,7 @@ export default function AuthPage() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4 }}
                 className="glass-card"
-                style={{ maxWidth: '420px', width: '100%', padding: '36px 32px' }}
+                style={{ maxWidth: '420px', width: '100%', padding: '36px 32px', background: 'var(--glass-bg)', backdropFilter: 'blur(24px)', WebkitBackdropFilter: 'blur(24px)' }}
             >
                 {/* Brand */}
                 <div style={{ textAlign: 'center', marginBottom: '28px' }}>
@@ -101,7 +101,7 @@ export default function AuthPage() {
                             style={{
                                 flex: 1, padding: '10px', border: 'none', cursor: 'pointer',
                                 fontWeight: 600, fontSize: '0.85rem', transition: 'all 0.2s',
-                                background: role === r ? 'var(--neon-green)' : 'transparent',
+                                background: role === r ? 'var(--neon-green)' : 'var(--glass-bg)',
                                 color: role === r ? '#fff' : 'var(--text-muted)',
                             }}
                         >

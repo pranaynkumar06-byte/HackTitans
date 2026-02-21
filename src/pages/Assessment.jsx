@@ -28,9 +28,11 @@ export default function Assessment() {
         isLoading,
         isRunning,
         confidence,
+        facingMode,
         initializePose,
         startCamera,
         stopCamera,
+        switchCamera,
     } = usePoseDetection();
 
     // Activity logic
@@ -192,7 +194,7 @@ export default function Assessment() {
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
                     {/* Camera Feed with Pose Overlay */}
                     <div ref={overlayContainerRef} style={{ position: 'relative', width: '100%', maxWidth: '640px' }}>
-                        <CameraFeed ref={videoRef} isRunning={isRunning} />
+                        <CameraFeed ref={videoRef} isRunning={isRunning} facingMode={facingMode} onSwitchCamera={switchCamera} />
                         {landmarks && isRunning && (
                             <PoseOverlay
                                 landmarks={landmarks}

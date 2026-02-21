@@ -21,7 +21,7 @@ const BENCHMARKS = {
 
 export default function SprintTest() {
     const videoRef = useRef(null);
-    const { landmarks, isLoading, isRunning, confidence, initializePose, startCamera, stopCamera } = usePoseDetection();
+    const { landmarks, isLoading, isRunning, confidence, facingMode, initializePose, startCamera, stopCamera, switchCamera } = usePoseDetection();
 
     const [distance, setDistance] = useState(20);
     const [phase, setPhase] = useState('idle'); // idle, ready, running, finished
@@ -150,7 +150,7 @@ export default function SprintTest() {
                     {/* Camera feed */}
                     <div>
                         <div style={{ position: 'relative', marginBottom: '16px' }}>
-                            <CameraFeed ref={videoRef} isRunning={isRunning} />
+                            <CameraFeed ref={videoRef} isRunning={isRunning} facingMode={facingMode} onSwitchCamera={switchCamera} />
                             {landmarks && isRunning && (
                                 <PoseOverlay landmarks={landmarks} formQuality={showRedOverlay ? 'bad' : phase === 'running' ? 'good' : 'warning'} />
                             )}

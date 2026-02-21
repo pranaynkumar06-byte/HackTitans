@@ -42,6 +42,7 @@ const NAV_SECTIONS = [
         items: [
             { path: '/test/target', icon: '🎯', label: 'Target Accuracy' },
             { path: '/test/reaction', icon: '🧠', label: 'Reaction Time' },
+            { path: '/test/combat-reaction', icon: '🥊', label: 'Combat Reaction' },
         ],
     },
     {
@@ -58,7 +59,7 @@ export default function Layout({ children }) {
     const online = isOnline();
 
     return (
-        <div style={{ display: 'flex', minHeight: '100vh', background: 'var(--navy-darkest)' }}>
+        <div style={{ display: 'flex', minHeight: '100vh', background: 'var(--bg-base)' }}>
             <div className="animated-bg" />
 
             {/* Mobile overlay */}
@@ -70,7 +71,7 @@ export default function Layout({ children }) {
                         exit={{ opacity: 0 }}
                         onClick={() => setSidebarOpen(false)}
                         style={{
-                            position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.6)',
+                            position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.3)',
                             zIndex: 90, display: 'none',
                         }}
                         className="sidebar-overlay"
@@ -86,8 +87,8 @@ export default function Layout({ children }) {
                     height: '100vh',
                     position: 'sticky',
                     top: 0,
-                    background: 'rgba(8, 11, 18, 0.92)',
-                    borderRight: sidebarOpen ? '1px solid var(--glass-border)' : 'none',
+                    background: '#ffffff',
+                    borderRight: sidebarOpen ? '1px solid rgba(0,0,0,0.06)' : 'none',
                     backdropFilter: 'blur(20px)',
                     overflowY: 'auto',
                     overflowX: 'hidden',
@@ -135,8 +136,8 @@ export default function Layout({ children }) {
                                                 display: 'flex', alignItems: 'center', gap: '12px',
                                                 padding: '10px 18px', marginInline: '8px', borderRadius: '10px',
                                                 textDecoration: 'none', fontSize: '0.88rem', fontWeight: 600,
-                                                color: isActive ? '#818cf8' : 'var(--text-secondary)',
-                                                background: isActive ? 'rgba(129, 140, 248, 0.06)' : 'transparent',
+                                                color: isActive ? 'var(--accent-cyan)' : 'var(--text-secondary)',
+                                                background: isActive ? 'rgba(34, 211, 238, 0.1)' : 'transparent',
                                                 transition: 'all 0.2s ease',
                                             })}
                                         >
@@ -174,16 +175,19 @@ export default function Layout({ children }) {
                 <header style={{
                     padding: '12px 20px',
                     display: 'flex', alignItems: 'center', gap: '16px',
-                    background: 'rgba(8, 11, 18, 0.85)',
+                    background: 'rgba(255,255,255,0.04)',
                     backdropFilter: 'blur(24px)',
+                    WebkitBackdropFilter: 'blur(24px)',
                     position: 'sticky', top: 0, zIndex: 50,
-                    boxShadow: '0 1px 0 rgba(148, 163, 184, 0.05)',
+                    borderBottom: '1px solid var(--glass-border)',
+                    boxShadow: '0 4px 24px rgba(0,0,0,0.1)',
                 }}>
                     <button onClick={() => setSidebarOpen(!sidebarOpen)} style={{
-                        background: 'none', border: '1px solid var(--glass-border)',
+                        background: 'var(--glass-bg)', border: '1px solid var(--glass-border)',
                         color: 'var(--text-primary)', cursor: 'pointer', fontSize: '1.2rem',
-                        padding: '6px 10px', borderRadius: '8px', display: 'flex',
+                        padding: '6px 10px', borderRadius: '12px', display: 'flex',
                         alignItems: 'center', justifyContent: 'center',
+                        transition: 'all 0.3s ease',
                     }}>
                         ☰
                     </button>

@@ -26,6 +26,8 @@ export default function usePoseDetection() {
     const [isLoading, setIsLoading] = useState(true);
     const [isRunning, setIsRunning] = useState(false);
     const [confidence, setConfidence] = useState(0);
+    const [facingMode, setFacingMode] = useState('user');
+    const facingModeRef = useRef('user');
 
     const poseRef = useRef(null);
     const videoRef = useRef(null);
@@ -83,16 +85,22 @@ export default function usePoseDetection() {
     /**
      * Start the camera and begin pose detection.
      */
-    const startCamera = useCallback(async (videoElement, canvasElement) => {
+    const startCamera = useCallback(async (videoElement, canvasElement, mode) => {
         videoRef.current = videoElement;
         canvasRef.current = canvasElement;
+        const useMode = mode || facingModeRef.current;
 
         try {
+            // Stop existing stream if any
+            if (streamRef.current) {
+                streamRef.current.getTracks().forEach((track) => track.stop());
+            }
+
             const stream = await navigator.mediaDevices.getUserMedia({
                 video: {
-                    facingMode: 'user',
-                    width: { ideal: 640 },
-                    height: { ideal: 480 },
+                    facingMode: useMode,
+                    width: { ideal: 1280 },
+                    height: { ideal: 960 },
                 },
                 audio: false,
             });
@@ -113,6 +121,19 @@ export default function usePoseDetection() {
             console.error('Failed to start camera:', error);
         }
     }, []);
+
+    /**
+     * Switch between front and rear cameras.
+     */
+    const switchCamera = useCallback(async () => {
+        const newMode = facingModeRef.current === 'user' ? 'environment' : 'user';
+        facingModeRef.current = newMode;
+        setFacingMode(newMode);
+
+        if (isRunning && videoRef.current) {
+            await startCamera(videoRef.current, canvasRef.current, newMode);
+        }
+    }, [isRunning, startCamera]);
 
     /**
      * Main detection loop with FPS cap.
@@ -177,9 +198,11 @@ export default function usePoseDetection() {
         isLoading,
         isRunning,
         confidence,
+        facingMode,
         initializePose,
         startCamera,
         stopCamera,
+        switchCamera,
         videoRef,
         canvasRef,
     };

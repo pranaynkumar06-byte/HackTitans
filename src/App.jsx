@@ -20,6 +20,7 @@ const ReactionTest = lazy(() => import('./pages/ReactionTest'));
 const CoachDashboard = lazy(() => import('./pages/CoachDashboard'));
 const TestSelector = lazy(() => import('./pages/TestSelector'));
 const AuthPage = lazy(() => import('./pages/AuthPage'));
+const CombatReaction = lazy(() => import('./pages/CombatReaction'));
 
 function LoadingFallback() {
   return (
@@ -67,6 +68,9 @@ export default function App() {
 
             {/* Module 5: Reaction Time */}
             <Route path="/test/reaction" element={<ReactionTest />} />
+
+            {/* Module 6: Combat Sports */}
+            <Route path="/test/combat-reaction" element={<CombatReaction />} />
           </Routes>
         </Suspense>
       </Layout>

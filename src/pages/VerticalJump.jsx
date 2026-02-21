@@ -15,7 +15,7 @@ import { runCheatDetection, playAlertBeep } from '../utils/cheatDetection';
 
 export default function VerticalJump() {
     const videoRef = useRef(null);
-    const { landmarks, isLoading, isRunning, confidence, initializePose, startCamera, stopCamera } = usePoseDetection();
+    const { landmarks, isLoading, isRunning, confidence, facingMode, initializePose, startCamera, stopCamera, switchCamera } = usePoseDetection();
 
     const [phase, setPhase] = useState('idle'); // idle, calibrating, ready, jumping, landed
     const [standingReach, setStandingReach] = useState(null);
@@ -138,7 +138,7 @@ export default function VerticalJump() {
                     {/* Camera */}
                     <div>
                         <div style={{ position: 'relative', marginBottom: '16px' }}>
-                            <CameraFeed ref={videoRef} isRunning={isRunning} />
+                            <CameraFeed ref={videoRef} isRunning={isRunning} facingMode={facingMode} onSwitchCamera={switchCamera} />
                             {landmarks && isRunning && <PoseOverlay landmarks={landmarks} formQuality={showRedOverlay ? 'bad' : phase === 'jumping' ? 'good' : 'warning'} />}
                             <CheatAlertOverlay alerts={cheatAlerts} visible={showRedOverlay} />
                         </div>

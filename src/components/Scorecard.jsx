@@ -24,9 +24,12 @@ export default function Scorecard({ athlete, scores, onClose }) {
 
     return (
         <div style={{
-            background: 'var(--navy-dark)', borderRadius: '20px',
+            background: 'var(--glass-bg)', borderRadius: '20px',
             padding: '36px', maxWidth: '600px', margin: '0 auto',
             border: '1px solid var(--glass-border)',
+            backdropFilter: 'blur(24px)',
+            WebkitBackdropFilter: 'blur(24px)',
+            boxShadow: 'var(--shadow-lg)',
         }}>
             {/* Header */}
             <div style={{
